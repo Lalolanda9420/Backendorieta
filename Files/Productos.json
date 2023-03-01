@@ -1,11 +1,11 @@
 [
 	{
-		"code": "PR01",
-		"title": "Mouse Inalambrico Logitech",
-		"description": "Negro con led roja",
-		"price": 200,
-		"thumbnail": "mouse.jpg",
-		"stock": 50,
+		"code": "JR10",
+		"title": "Camiseta alternativa Boca",
+		"description": "Blanca y azul",
+		"price": 18000,
+		"thumbnail": "camiseta.jpg",
+		"stock": 32,
 		"id": 1
 	}
 ]

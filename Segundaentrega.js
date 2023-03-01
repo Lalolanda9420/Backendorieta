@@ -5,11 +5,12 @@ export default class ProductManager {
         this.path = "./files/Productos.json";
     }
     getProducts = async () => {
-        if (fs.existsSync(this.path)) {
+        try {
             const data = await fs.promises.readFile(this.path, 'utf-8');
-            const result = JSON.parse(data);
-            return result;
-        } else {
+            this.products = JSON.parse(data);
+            return this.products;
+        } catch (error) {
+            console.error('error read archive ${this.path}: ${error}');
             return [];
         }
     }
