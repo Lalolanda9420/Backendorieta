@@ -10,7 +10,7 @@ export default class ProductManager {
             this.products = JSON.parse(data);
             return this.products;
         } catch (error) {
-            console.error('error read archive ${this.path}: ${error}');
+            console.error(`error read archive ${this.path}: ${error}`);
             return [];
         }
     }
@@ -72,7 +72,7 @@ export default class ProductManager {
             let productFounded = this.products.find((product) => product.id === id)
             if (productFounded) {
                 try {
-                    const valor = this.products.filter((event) => event.id != id);
+                    const valor = this.products.filter((event) => event.id!==id);
 
                     this.products = valor;
 
@@ -91,36 +91,43 @@ export default class ProductManager {
 
     }
     updateProduct = async (id, code, title, description, price, thumbnail, stock) => {
-        let productExists = this.products.find((product) => product.id === id)
-        if (productExists) {
-            try {
-                const productoAmodificar = this.products.filter((product) => product.id === id);
 
-                const prod = {
+        try {
 
-                    code: code ?? productoAmodificar[0].code,
-                    title: title ?? productoAmodificar[0].title,
-                    description: description ?? productoAmodificar[0].description,
-                    price: price ?? productoAmodificar[0].price,
-                    thumbnail: thumbnail ?? productoAmodificar[0].thumbnail,
-                    stock: stock ?? productoAmodificar[0].stock,
-                    id: id
-                }
+            const products = await this.getProducts(); 
 
-                this.products[id - 1] = prod;
+            const product = products.find(product => product.id === id) 
 
-                //console.log//
-                
-                await fs.promises.writeFile(this.path, JSON.stringify(this.products, null, "\t"));
-                return "Product updated";
-            } catch (error) {
-                console.log(error)
+            if (!product) {
+
+                console.log(`no se encontro el producto con id ${id}`)
+
+                return
+
+            } else {
+
+                product.code = code,
+
+                    product.title = title,
+
+                    product.description = description,
+
+                    product.price = price,
+
+                    product.thumbnail = thumbnail,
+
+                    product.stock = stock
+
+                await fs.promises.writeFile(this.path, JSON.stringify(products)); //reescribimos el archivo .json ya modificado//
+
+                return console.log(product)
+
             }
 
-        } else {
-            return `The product to update with the id ${id} does not exist in the list`;
+        } catch (error) {
+
+            console.error(error)
+
         }
-
-
     }
 }
