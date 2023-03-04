@@ -67,20 +67,27 @@ export default class ProductManager {
         }
 
     }
+    //eliminacion producto//
     deleteProducts = async (id) => {
         if (fs.existsSync(this.path)) {
             let productFounded = this.products.find((product) => product.id === id)
             if (productFounded) {
-                try {
-                    const valor = this.products.filter((event) => event.id!==id);
+                try { const products = await this.getProducts(); 
 
-                    this.products = valor;
-
-                    await fs.promises.writeFile(this.path, JSON.stringify(valor, null, "\t"))
-                    return "Product eliminated";
-
-                } catch (error) {
-                    console.log(error);
+                let producto = products.find((prod) => prod.id == id);
+    
+                if (!producto) return console.log(`product con id ${id} no encontrado`);
+    
+                const eliminarProducto = products.filter((prod) => prod.id != id);
+    
+                fs.promises.writeFile(this.path, JSON.stringify(eliminarProducto));
+    
+                console.log('Produto eliminado');
+    
+            } catch (error) {
+    
+                console.log(error);
+                           
                 }
 
             } else {
