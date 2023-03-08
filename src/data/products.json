@@ -1,0 +1,48 @@
+[
+	{
+		"code": "JR10",
+		"title": "Camiseta alternativa Boca",
+		"description": "Blanca y azul",
+		"price": 18000,
+		"thumbnail": "camiseta.jpg",
+		"stock": 32,
+		"id": 1
+	},
+	{
+		"code": "JR10",
+		"title": "Camiseta alternativa Boca",
+		"description": "Blanca y azul",
+		"price": 18000,
+		"thumbnail": "camiseta.jpg",
+		"stock": 32,
+		"id": 2
+	},
+	{
+		"code": "JR10",
+		"title": "Camiseta alternativa Boca",
+		"description": "Blanca y azul",
+		"price": 18000,
+		"thumbnail": "camiseta.jpg",
+		"stock": 32,
+		"id": 3
+	},
+	{
+		"code": "JR10",
+		"title": "Camiseta alternativa Boca",
+		"description": "Blanca y azul",
+		"price": 18000,
+		"thumbnail": "camiseta.jpg",
+		"stock": 32,
+		"id": 4
+	},
+	{
+		"code": "JR10",
+		"title": "Camiseta alternativa Boca",
+		"description": "Blanca y azul",
+		"price": 18000,
+		"thumbnail": "camiseta.jpg",
+		"stock": 32,
+		"id": 5
+	}
+
+]

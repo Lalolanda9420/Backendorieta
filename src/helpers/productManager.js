@@ -1,13 +1,15 @@
 import fs from "fs";
-export default class ProductManager {
+
+class ProductManager {
+    
     constructor() {
         this.products = [];
-        this.path = "./files/Productos.json";
+        this.path = './src/data/products.json';
     }
     getProducts = async () => {
         try {
             const data = await fs.promises.readFile(this.path, 'utf-8');
-            this.products = JSON.parse(data);
+            this.products = await JSON.parse(data);
             return this.products;
         } catch (error) {
             console.error(`error read archive ${this.path}: ${error}`);
@@ -138,3 +140,6 @@ export default class ProductManager {
         }
     }
 }
+
+
+export default ProductManager;
